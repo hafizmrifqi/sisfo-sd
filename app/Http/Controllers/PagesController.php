@@ -8,6 +8,10 @@ class PagesController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $data = [
+            'title' => 'SIAD Sekolah | SDIT Arofatul Ulum',
+        ];
+
+        return view('index', $data);
     }
 }
