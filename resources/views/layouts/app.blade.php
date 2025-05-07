@@ -111,6 +111,11 @@
                                 <span class="sub-item">Input Siswa</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="components/buttons.html">
+                                <span class="sub-item">Absen Siswa</span>
+                                </a>
+                            </li>
                         </div>
                     </li>
 
@@ -136,6 +141,28 @@
                         </div>
                     </li>
 
+                    {{-- Mata Pelajaran --}}
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#mapel">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Mata Pelajaran</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="mapel">
+                            <ul class="nav nav-collapse">
+                            <li>
+                                <a href="components/avatars.html">
+                                <span class="sub-item">Data Mata Pelajaran</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="components/buttons.html">
+                                <span class="sub-item">Input Mata Pelajaran </span>
+                                </a>
+                            </li>
+                        </div>
+                    </li>
+
                     {{-- Nilai --}}
                     <li class="nav-item">
                         <a data-bs-toggle="collapse" href="#nilai">
@@ -153,6 +180,28 @@
                             <li>
                                 <a href="components/buttons.html">
                                 <span class="sub-item">Input Nilai Ujian</span>
+                                </a>
+                            </li>
+                        </div>
+                    </li>
+
+                    {{-- Kelas --}}
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#kelas">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Kelas</p>
+                            <span class="kelas"></span>
+                        </a>
+                        <div class="collapse" id="nilai">
+                            <ul class="nav nav-collapse">
+                            <li>
+                                <a href="components/avatars.html">
+                                <span class="sub-item">Data Kelas</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="components/buttons.html">
+                                <span class="sub-item">Input Kelas</span>
                                 </a>
                             </li>
                         </div>
