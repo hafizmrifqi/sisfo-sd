@@ -246,7 +246,12 @@
                 <div class="container-fluid">
                     <h3>SD IT Arofatul Ulum</h3>
                 </div>
+                <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-primary rounded">Logout</button>
+                </form>
             </nav>
+
           <!-- End Navbar -->
         </div>
 
