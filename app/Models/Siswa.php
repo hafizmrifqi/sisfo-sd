@@ -9,4 +9,9 @@ class Siswa extends Model
     protected $fillable = [
         'nipd', 'nama', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'nama_ayah', 'nama_ibu'
     ];
+
+    public function nilais()
+    {
+        return $this->hasMany(Nilai::class);
+    }
 }
