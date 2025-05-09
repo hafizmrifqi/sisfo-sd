@@ -35,7 +35,6 @@ return new class extends Migration
             $table->timestamps(); // Kolom created_at dan updated_at
             $table->softDeletes(); // Untuk fitur soft delete
 
-            $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('set null');
         });
     }
 

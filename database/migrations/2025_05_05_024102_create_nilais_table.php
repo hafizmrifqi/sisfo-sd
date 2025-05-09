@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('siswa_id')->constrained('siswas')->onDelete('cascade');
 
             // Relasi ke mata pelajaran
-            $table->foreignId('mapel_id')->constrained('mata_pelajarans')->onDelete('cascade');
+            $table->foreignId('mapel_id')->constrained('mapels')->onDelete('cascade');
 
             // Nilai
             $table->float('nilai')->default(0); // Misalnya 85.5
