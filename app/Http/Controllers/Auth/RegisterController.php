@@ -32,7 +32,7 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended('/dashboard'); // Change as needed
+        return redirect()->intended('/'); // Change as needed
     }
 
     protected function validator(array $data)
