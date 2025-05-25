@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Pages\SiswaController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,5 +16,13 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Protected route example
 Route::middleware('auth')->group(function () {
+
+    // Dashboard
     Route::get('/', [PagesController::class, 'index'])->name('index');
+
+    // Siswa
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
+    Route::get('/siswa/detail/{id}', [SiswaController::class, 'detail'])->name('siswa.detail');
+    Route::get('/siswa/tambah', [SiswaController::class, 'add'])->name('siswa.add');
+    Route::post('/siswa/simpan', [SiswaController::class, 'addAction'])->name('siswa.store');
 });

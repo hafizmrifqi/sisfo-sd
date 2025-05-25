@@ -14,7 +14,7 @@
     />
 
     <!-- Fonts and icons -->
-    <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
     <script>
       WebFont.load({
         google: { families: ["Public Sans:300,400,500,600,700"] },
@@ -25,7 +25,7 @@
             "Font Awesome 5 Brands",
             "simple-line-icons",
           ],
-          urls: ["assets/css/fonts.min.css"],
+          urls: ["{{ asset('assets/css/fonts.min.css') }}"],
         },
         active: function () {
           sessionStorage.fonts = true;
@@ -34,9 +34,9 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/plugins.min.css" />
-    <link rel="stylesheet" href="assets/css/kaiadmin.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}" />
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="assets/css/demo.css" />
@@ -73,7 +73,7 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
             <div class="sidebar-content">
                 <ul class="nav nav-secondary">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a
                             data-bs-toggle="collapse"
                             href="#"
@@ -102,17 +102,17 @@
                         <div class="collapse" id="siswa">
                             <ul class="nav nav-collapse">
                             <li>
-                                <a href="components/avatars.html">
+                                <a href="/siswa">
                                 <span class="sub-item">Data Siswa</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="/siswa/tambah">
                                 <span class="sub-item">Input Siswa</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="/siswa/absensi">
                                 <span class="sub-item">Absen Siswa</span>
                                 </a>
                             </li>
@@ -190,9 +190,9 @@
                         <a data-bs-toggle="collapse" href="#kelas">
                             <i class="fas fa-layer-group"></i>
                             <p>Kelas</p>
-                            <span class="kelas"></span>
+                            <span class="caret"></span>
                         </a>
-                        <div class="collapse" id="nilai">
+                        <div class="collapse" id="kelas">
                             <ul class="nav nav-collapse">
                             <li>
                                 <a href="components/avatars.html">
@@ -206,6 +206,7 @@
                             </li>
                         </div>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -279,34 +280,34 @@
 
     </div>
     <!--   Core JS Files   -->
-    <script src="assets/js/core/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/core/popper.min.js"></script>
-    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/js/core/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
 
     <!-- jQuery Scrollbar -->
-    <script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="{{ asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
     <!-- Chart JS -->
-    <script src="assets/js/plugin/chart.js/chart.min.js"></script>
+    <script src="{{ asset('assets/js/plugin/chart.js/chart.min.js') }}"></script>
 
     <!-- jQuery Sparkline -->
-    <script src="assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{ asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
 
     <!-- Chart Circle -->
-    <script src="assets/js/plugin/chart-circle/circles.min.js"></script>
+    <script src="{{ asset('assets/js/plugin/chart-circle/circles.min.js') }}"></script>
 
     <!-- Datatables -->
-    <script src="assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="{{ asset('assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
     <!-- jQuery Vector Maps -->
-    <script src="assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
-    <script src="assets/js/plugin/jsvectormap/world.js"></script>
+    <script src="{{ asset('assets/js/plugin/jsvectormap/jsvectormap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugin/jsvectormap/world.js') }}"></script>
 
     <!-- Sweet Alert -->
-    <script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+    <script src="{{ asset('assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
 
     <!-- Kaiadmin JS -->
-    <script src="assets/js/kaiadmin.min.js"></script>
+    <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
 
   </body>
 </html>
