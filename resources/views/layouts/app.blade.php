@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}" />
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css"> -->
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="assets/css/demo.css" />
@@ -48,9 +49,9 @@
         <div class="sidebar-logo">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
                 <img
-                src="assets/img/siad-logo-light.png"
+                src="{{ asset('assets/img/siad-logo-light.png') }}"
                 alt="navbar brand"
                 class="navbar-brand"
                 height="30"
@@ -76,7 +77,7 @@
                     <li class="nav-item">
                         <a
                             data-bs-toggle="collapse"
-                            href="#"
+                            href="/"
                             class="collapsed"
                             aria-expanded="false"
                         >
@@ -213,70 +214,70 @@
     </div>
       <!-- End Sidebar -->
 
-      <div class="main-panel">
-        <div class="main-header">
-          <div class="main-header-logo">
-            <!-- Logo Header -->
-            <div class="logo-header" data-background-color="dark">
-              <a href="index.html" class="logo">
-                <img
-                  src="assets/img/siad-logo.png"
-                  alt="navbar brand"
-                  class="navbar-brand"
-                  height="20"
-                />
-              </a>
-              <div class="nav-toggle">
-                <button class="btn btn-toggle toggle-sidebar">
-                  <i class="gg-menu-right"></i>
-                </button>
-                <button class="btn btn-toggle sidenav-toggler">
-                  <i class="gg-menu-left"></i>
-                </button>
-              </div>
-              <button class="topbar-toggler more">
-                <i class="gg-more-vertical-alt"></i>
-              </button>
+    <div class="main-panel">
+    <div class="main-header">
+        <div class="main-header-logo">
+        <!-- Logo Header -->
+        <div class="logo-header" data-background-color="dark">
+            <a href="index.html" class="logo">
+            <img
+                src="assets/img/siad-logo.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="20"
+            />
+            </a>
+            <div class="nav-toggle">
+            <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+            </button>
+            <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+            </button>
             </div>
-            <!-- End Logo Header -->
-          </div>
-          <!-- Navbar Header -->
-            <nav
-                class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
-                >
-                <div class="container-fluid">
-                    <h3>SD IT Arofatul Ulum</h3>
-                </div>
-                <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-primary rounded">Logout</button>
-                </form>
-            </nav>
-
-          <!-- End Navbar -->
+            <button class="topbar-toggler more">
+            <i class="gg-more-vertical-alt"></i>
+            </button>
         </div>
-
-        <div class="container">
-          <div class="page-inner">
-            @yield('content')
-          </div>
+        <!-- End Logo Header -->
         </div>
-
-        <footer class="footer">
-          <div class="container-fluid d-flex justify-content-between">
-            <nav class="pull-left">
-              <ul class="nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Bantuan </a>
-                </li>
-              </ul>
-            </nav>
-            <div class="copyright">
-              2025, dibuat oleh <a href="http://www.themekita.com">Kelompok D</a>
+        <!-- Navbar Header -->
+        <nav
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+            >
+            <div class="container-fluid">
+                <h3>SD IT Arofatul Ulum</h3>
             </div>
-          </div>
-        </footer>
-      </div>
+            <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn btn-primary rounded">Logout</button>
+            </form>
+        </nav>
+
+        <!-- End Navbar -->
+    </div>
+
+    <div class="container">
+        <div class="page-inner">
+        @yield('content')
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container-fluid d-flex justify-content-between">
+        <nav class="pull-left">
+            <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#"> Bantuan </a>
+            </li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            2025, dibuat oleh <a href="http://www.themekita.com">Kelompok D</a>
+        </div>
+        </div>
+    </footer>
+    </div>
 
     </div>
     <!--   Core JS Files   -->

@@ -11,7 +11,7 @@
 
     <div class="col-md-12">
         <div class="card">
-            <form action="{{ route('siswa.store') }}" method="POST">
+            <form action="{{ route('siswa.update', $siswa->id) }}" method="POST">
             @csrf
                 <div class="card-body">
                     <div class="row">
@@ -24,6 +24,7 @@
                                     id="nipd"
                                     placeholder="Masukian NIPD"
                                     name="nipd"
+                                    value="{{ old('nipd', $siswa->nipd) }}"
                                 />
                                 <small id="nipd" class="form-text text-muted"
                                     >Pastikan data sesuai</small
@@ -39,6 +40,7 @@
                                     id="nama"
                                     placeholder="Masukian Nama Siswa"
                                     name="nama"
+                                    value="{{ old('nama', $siswa->nama) }}"
                                 />
                                 <small id="nama" class="form-text text-muted"
                                     >Nama panjang siswa</small
@@ -50,8 +52,8 @@
                                 <label for="jenis_kelamin">Jenis Kelamin</label>
                                 <select class="form-select form-control" id="jenis_kelamin" name="jenis_kelamin">
                                     <option>-- Pilih Jenis Kelamin</option>
-                                    <option value="L">Laki - laki</option>
-                                    <option value="P">Perempuan</option>
+                                    <option value="L" {{ $siswa->jenis_kelamin == 'L' ? 'selected' : '' }}>Laki-laki</option>
+                                    <option value="P" {{ $siswa->jenis_kelamin == 'P' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
                         </div>
@@ -64,6 +66,7 @@
                                     id="tempat_lahir"
                                     placeholder="Masukian kota tempat lahir siswa"
                                     name="tempat_lahir"
+                                    value="{{ old('tempat_lahir', $siswa->tempat_lahir) }}"
                                 />
                                 <small id="tempat_lahir" class="form-text text-muted"
                                     >Tempat lahir siswa</small
@@ -79,6 +82,7 @@
                                     id="tanggal_lahir"
                                     placeholder="Masukian tanggal lahir siswa"
                                     name="tanggal_lahir"
+                                    value="{{ old('tanggal_lahir', $siswa->tanggal_lahir) }}"
                                 />
                                 <small id="tanggal_lahir" class="form-text text-muted"
                                     >Tanggal lahir siswa</small
@@ -94,6 +98,7 @@
                                     id="nama_ayah"
                                     placeholder="Masukian Nama Ayah Siswa"
                                     name="nama_ayah"
+                                    value="{{ old('nama_ayah', $siswa->nama_ayah) }}"
                                 />
                                 <small id="nama_ayah" class="form-text text-muted"
                                     >Nama ayah siswa</small
@@ -109,6 +114,7 @@
                                     id="nama ibu"
                                     placeholder="Masukian Nama Ibu Siswa"
                                     name="nama_ibu"
+                                    value="{{ old('nama_ibu', $siswa->nama_ibu) }}"
                                 />
                                 <small id="nama_ibu" class="form-text text-muted"
                                     >Nama ibu siswa</small
