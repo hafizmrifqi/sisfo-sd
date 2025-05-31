@@ -76,10 +76,8 @@
                 <ul class="nav nav-secondary">
                     <li class="nav-item">
                         <a
-                            data-bs-toggle="collapse"
                             href="/"
                             class="collapsed"
-                            aria-expanded="false"
                         >
                             <i class="fas fa-home"></i>
                             <p>Dashboard</p>
