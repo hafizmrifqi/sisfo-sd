@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Pages\GuruController;
 use App\Http\Controllers\Pages\SiswaController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/siswa/edit/{id}', [SiswaController::class, 'edit'])->name('siswa.edit');
     Route::post('/siswa/update/{id}', [SiswaController::class, 'update'])->name('siswa.update');
     Route::get('/siswa/delete/{id}', [SiswaController::class, 'delete'])->name('siswa.delete');
+
+    // Guru
+    Route::get('/guru', [GuruController::class, 'index'])->name('guru.index');
+    Route::get('/guru/detail/{id}', [GuruController::class, 'detail'])->name('guru.detail');
+    Route::get('/guru/tambah', [GuruController::class, 'add'])->name('guru.add');
+    Route::post('/guru/simpan', [GuruController::class, 'addAction'])->name('guru.store');
+    Route::get('/guru/edit/{id}', [GuruController::class, 'edit'])->name('guru.edit');
+    Route::post('/guru/update/{id}', [GuruController::class, 'update'])->name('guru.update');
+    Route::get('/guru/delete/{id}', [GuruController::class, 'delete'])->name('guru.delete');
 });

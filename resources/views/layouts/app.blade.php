@@ -130,12 +130,12 @@
                         <div class="collapse" id="guru">
                             <ul class="nav nav-collapse">
                             <li>
-                                <a href="components/avatars.html">
+                                <a href="/guru">
                                 <span class="sub-item">Data Guru</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="/guru/tambah">
                                 <span class="sub-item">Input Guru</span>
                                 </a>
                             </li>

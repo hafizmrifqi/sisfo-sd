@@ -4,37 +4,35 @@
     class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
 >
     <div>
-        <h3 class="fw-bold mb-3">Data Siswa</h3>
-        <a href="{{ url('siswa/tambah') }}" class="btn btn-primary mb-3">Tambah Siswa</a>
+        <h3 class="fw-bold mb-3">Data Guru</h3>
+        <a href="{{ url('guru/tambah') }}" class="btn btn-primary mb-3">Tambah Guru</a>
     </div>
 </div>
 <div class="row">
     <div class="col-md-6">
         <!-- Table -->
-        <table id="siswaTable" class="display table table-bordered table-responsive" style="width:100%">
+        <table id="guruTable" class="display table table-bordered table-responsive" style="width:100%">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>NIPD</th>
+                    <th>NIP</th>
                     <th>Nama</th>
-                    <th>Jenis Kelamin</th>
-                    <th>Tempat Lahir</th>
-                    <th>Tanggal Lahir</th>
+                    <th>Email</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($siswas as $key => $siswa)
+                @foreach ($gurus as $key => $guru)
                 <tr>
-                    <td>{{ $loop->iteration + ($siswas->perPage() * ($siswas->currentPage() - 1)) }}</td>
-                    <td>{{ $siswa->nipd }}</td>
-                    <td>{{ $siswa->nama }}</td>
-                    <td>{{ $siswa->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
-                    <td>{{ $siswa->tempat_lahir }}</td>
-                    <td>{{ \Carbon\Carbon::parse($siswa->tanggal_lahir)->format('d-m-Y') }}</td>
+                    <td>{{ $loop->iteration + ($gurus->perPage() * ($gurus->currentPage() - 1)) }}</td>
+                    <td>{{ $guru->nip }}</td>
+                    <td>{{ $guru->nama }}</td>
+                    <td>{{ $guru->email }}</td>
+                    <td>{{ $guru->status }}</td>
                     <td class="d-flex">
-                        <a href="{{ route('siswa.edit', $siswa->id) }}" class="btn btn-sm btn-warning m-1">Edit</a>
-                        <a href="{{ route('siswa.delete', $siswa->id) }}" class="btn btn-sm btn-danger m-1" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
+                        <a href="{{ route('guru.edit', $guru->id) }}" class="btn btn-sm btn-warning m-1">Edit</a>
+                        <a href="{{ route('guru.delete', $guru->id) }}" class="btn btn-sm btn-danger m-1" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
                     </td>
                 </tr>
                 @endforeach
@@ -43,14 +41,14 @@
 
         <!-- Paginasi -->
         <div class="d-flex justify-content-center">
-            {{ $siswas->links() }}
+            {{ $gurus->links() }}
         </div>
     </div>
 </div>
 
 <script>
 $(document).ready(function() {
-    $('#siswaTable').DataTable({
+    $('#guruTable').DataTable({
         paging: true,
         searching: true,
         ordering: true,
