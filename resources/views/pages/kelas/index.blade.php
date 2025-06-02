@@ -27,7 +27,7 @@
                     <td>{{ $loop->iteration + ($kelases->perPage() * ($kelases->currentPage() - 1)) }}</td>
                     <td>{{ $kelas->nama_kelas }}</td>
                     <td>{{ $kelas->tahun_ajaran }}</td>
-                    <td>{{ $kelas->walas_id}}</td>
+                    <td>{{ optional($kelas->walas)->nama ?? 'Tidak ada wali kelas' }}</td>
                     <td class="d-flex">
                         <a href="{{ route('kelas.edit', $kelas->id) }}" class="btn btn-sm btn-warning m-1">Edit</a>
                         <a href="{{ route('kelas.delete', $kelas->id) }}" class="btn btn-sm btn-danger m-1" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>

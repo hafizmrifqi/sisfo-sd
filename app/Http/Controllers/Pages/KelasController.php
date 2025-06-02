@@ -12,11 +12,11 @@ class KelasController extends Controller
 {
     public function index()
     {
-        $kelas = Kelas::orderBy('created_at', 'desc')->paginate(15);
+        $kelas = Kelas::with('walas')->orderBy('created_at', 'desc')->paginate(15);
 
         $data = [
             'title' => 'Data Kelas',
-            'kelases' => $kelas
+            'kelases' => $kelas,
         ];
 
         // Logika untuk menampilkan daftar kelas
@@ -69,10 +69,12 @@ class KelasController extends Controller
     public function edit($id)
     {
         $kelas = Kelas::findOrFail($id);
+        $guru = Guru::all(); // atau where dosen => role guru
 
         $data = [
             'title' => 'Edit Kelas',
             'kelas' => $kelas,
+            'guru' => $guru, // Daftar guru untuk pilihan wali kelas
         ];
 
         // Logika untuk menampilkan form edit kelas
