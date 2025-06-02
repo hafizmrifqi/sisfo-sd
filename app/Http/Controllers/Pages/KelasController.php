@@ -38,9 +38,11 @@ class KelasController extends Controller
 
     public function detail($id)
     {
+        $kelas = Kelas::with('siswa')->findOrFail($id);
+
         $data = [
             'title' => 'Detail Kelas',
-            'kelas' => $id, // Ganti dengan logika untuk mengambil data kelas berdasarkan ID
+            'kelas' => $kelas,
         ];
 
         // Logika untuk menampilkan detail kelas
@@ -77,7 +79,7 @@ class KelasController extends Controller
         return view('pages.kelas.edit', $data);
     }
 
-    public function editAction(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nama_kelas' => 'required|string|max:100',
@@ -103,15 +105,33 @@ class KelasController extends Controller
         return redirect()->route('kelas.index')->with('success', 'Kelas berhasil dihapus.');
     }
 
+    // Fungsi untuk menambahkan siswa ke kelas
+    public function anggota($id)
+    {
+        // Ambil data kelas beserta siswa yang sudah terdaftar
+        $kelas = Kelas::with('siswa')->findOrFail($id);
+
+        // Ambil semua siswa yang belum terdaftar di kelas ini
+        $semuaSiswa = Siswa::whereDoesntHave('kelas', function ($query) use ($id) {
+            $query->where('kelas.id', $id);
+        })->get();
+
+        $title = 'Anggota Kelas ' . $kelas->nama_kelas;
+
+        return view('pages.kelas.anggota', compact('kelas', 'semuaSiswa', 'title'));
+    }
+
     public function tambahSiswa(Request $request, $id)
     {
+        // Validasi input
         $request->validate([
             'siswa_id' => 'required|exists:siswa,id',
         ]);
 
+        // Cari kelas berdasarkan ID
         $kelas = Kelas::findOrFail($id);
 
-        // Cek apakah siswa sudah ada di kelas ini
+        // Periksa apakah siswa sudah ada di kelas ini
         if ($kelas->siswa->contains($request->siswa_id)) {
             return back()->with('error', 'Siswa sudah terdaftar di kelas ini.');
         }
@@ -122,16 +142,18 @@ class KelasController extends Controller
         return back()->with('success', 'Siswa berhasil ditambahkan ke kelas.');
     }
 
-    public function anggota($id)
+    /**
+     * Menghapus siswa dari kelas
+     */
+    public function hapusSiswa($id, $siswaId)
     {
-        $kelas = Kelas::with('siswa')->findOrFail($id);
+        // Cari kelas berdasarkan ID
+        $kelas = Kelas::findOrFail($id);
 
-        // Ambil semua siswa yang belum terdaftar di kelas ini
-        $semuaSiswa = Siswa::whereDoesntHave('kelas', function ($query) use ($id) {
-            $query->where('kelas.id', $id);
-        })->get();
+        // Hapus siswa dari kelas
+        $kelas->siswa()->detach($siswaId);
 
-        return view('kelas.detail', compact('kelas', 'semuaSiswa'));
+        return back()->with('success', 'Siswa berhasil dihapus dari kelas.');
     }
 }
 

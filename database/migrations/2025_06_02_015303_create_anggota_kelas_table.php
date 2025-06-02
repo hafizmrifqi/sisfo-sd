@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('anggota_kelas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kelas_id')->nullable()->constrained('kelas')->onDelete('cascade');
-            $table->foreignId('siswa_id')->nullable()->constrained('siswas')->onDelete('cascade');
+            $table->foreignId('siswa_id')->nullable()->constrained('siswa')->onDelete('cascade');
 
             // Jika ada foreign key untuk siswa_id, pastikan tabel siswas sudah ada
             $table->unique(['kelas_id', 'siswa_id']);

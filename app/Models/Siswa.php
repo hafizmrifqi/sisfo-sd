@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Siswa extends Model
 {
+    protected $table = 'siswa';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'nipd', 'nama', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'nama_ayah', 'nama_ibu'
     ];

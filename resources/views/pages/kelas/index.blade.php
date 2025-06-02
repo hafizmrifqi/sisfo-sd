@@ -31,7 +31,7 @@
                     <td class="d-flex">
                         <a href="{{ route('kelas.edit', $kelas->id) }}" class="btn btn-sm btn-warning m-1">Edit</a>
                         <a href="{{ route('kelas.delete', $kelas->id) }}" class="btn btn-sm btn-danger m-1" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
-                        <a href="{{ route('kelas.detail', $kelas->id) }}" class="btn btn-sm btn-success m-1">Detail</a>
+                        <a href="{{ route('kelas.anggota', $kelas->id) }}" class="btn btn-sm btn-success m-1">Detail</a>
                     </td>
                 </tr>
                 @endforeach

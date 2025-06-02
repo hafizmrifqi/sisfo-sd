@@ -48,4 +48,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/kelas/edit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
     Route::post('/kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update');
     Route::get('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
+
+    // Tambah siswa ke kelas
+    Route::get('/kelas/{id}/anggota', [KelasController::class, 'anggota'])->name('kelas.anggota');
+    Route::post('/kelas/{id}/tambah-siswa', [KelasController::class, 'tambahSiswa'])->name('kelas.tambah.siswa');
+    Route::delete('/kelas/{id}/hapus-siswa/{siswaId}', [KelasController::class, 'hapusSiswa'])->name('kelas.hapus.siswa');
 });
