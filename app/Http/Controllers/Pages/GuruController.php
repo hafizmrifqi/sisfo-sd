@@ -88,7 +88,7 @@ class GuruController extends Controller
         return view('pages.guru.edit', $data);
     }
 
-    public function editAction(Request $request, $id)
+    public function update(Request $request, $id)
     {
         // Validasi input
         $request->validate([
@@ -106,7 +106,17 @@ class GuruController extends Controller
 
         // Update data ke database
         $guru = Guru::findOrFail($id);
-        $guru->update($request->all());
+        $guru->update([
+            'nip'           => $request->nip,
+            'nama'          => $request->nama,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tempat_lahir'  => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat'        => $request->alamat,
+            'no_hp'         => $request->no_hp,
+            'email'         => $request->email,
+            'status'        => $request->status
+        ]);
 
         return redirect()->route('guru.index')->with('success', 'Data guru berhasil diperbarui.');
     }
