@@ -14,4 +14,11 @@ class Siswa extends Model
     {
         return $this->hasMany(Nilai::class);
     }
+
+    public function kelas()
+    {
+        return $this->belongsToMany(Kelas::class, 'anggota_kelas')
+                    ->withPivot('status')
+                    ->withTimestamps();
+    }
 }

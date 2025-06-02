@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_kelas'); // Contoh: "Kelas 1A", "Kelas 2B"
             $table->foreignId('wali_kelas_id')->nullable()->constrained('gurus')->onDelete('set null'); // Relasi ke tabel guru
-            $table->year('tahun_ajaran')->default(date('Y')); // Tahun ajaran, misalnya 2025
-            $table->unsignedBigInteger('jumlah_siswa')->default(0); // Bisa diupdate otomatis lewat observer atau event
-            $table->text('deskripsi')->nullable();
+            $table->integer('tahun_ajaran')->default(date('Y'));
             $table->timestamps();
         });
     }
