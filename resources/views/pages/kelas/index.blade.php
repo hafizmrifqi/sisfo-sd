@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-6">
         <!-- Table -->
-        <table id="guruTable" class="display table table-bordered table-responsive" style="width:100%">
+        <table id="kelasTable" class="display table table-bordered table-responsive" style="width:100%">
             <thead>
                 <tr>
                     <th>No</th>
@@ -22,31 +22,32 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- @foreach ($gurus as $key => $guru)
+                @foreach ($kelases as $key => $kelas)
                 <tr>
-                    <td>{{ $loop->iteration + ($gurus->perPage() * ($gurus->currentPage() - 1)) }}</td>
-                    <td>{{ $guru->nip }}</td>
-                    <td>{{ $guru->nama }}</td>
-                    <td>{{ $guru->email }}</td>
+                    <td>{{ $loop->iteration + ($kelases->perPage() * ($kelases->currentPage() - 1)) }}</td>
+                    <td>{{ $kelas->nama_kelas }}</td>
+                    <td>{{ $kelas->tahun_ajaran }}</td>
+                    <td>{{ $kelas->walas_id}}</td>
                     <td class="d-flex">
-                        <a href="{{ route('guru.edit', $guru->id) }}" class="btn btn-sm btn-warning m-1">Edit</a>
-                        <a href="{{ route('guru.delete', $guru->id) }}" class="btn btn-sm btn-danger m-1" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
+                        <a href="{{ route('kelas.edit', $kelas->id) }}" class="btn btn-sm btn-warning m-1">Edit</a>
+                        <a href="{{ route('kelas.delete', $kelas->id) }}" class="btn btn-sm btn-danger m-1" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
+                        <a href="{{ route('kelas.detail', $kelas->id) }}" class="btn btn-sm btn-success m-1">Detail</a>
                     </td>
                 </tr>
-                @endforeach -->
+                @endforeach
             </tbody>
         </table>
 
         <!-- Paginasi -->
         <div class="d-flex justify-content-center">
-            {{ $gurus->links() }}
+            {{ $kelases->links() }}
         </div>
     </div>
 </div>
 
 <script>
 $(document).ready(function() {
-    $('#guruTable').DataTable({
+    $('#kelasTable').DataTable({
         paging: true,
         searching: true,
         ordering: true,

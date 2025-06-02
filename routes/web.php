@@ -2,6 +2,7 @@
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Pages\GuruController;
+use App\Http\Controllers\Pages\KelasController;
 use App\Http\Controllers\Pages\SiswaController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/guru/edit/{id}', [GuruController::class, 'edit'])->name('guru.edit');
     Route::post('/guru/update/{id}', [GuruController::class, 'update'])->name('guru.update');
     Route::get('/guru/delete/{id}', [GuruController::class, 'delete'])->name('guru.delete');
+
+    // Kelas
+    Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
+    Route::get('/kelas/detail/{id}', [KelasController::class, 'detail'])->name('kelas.detail');
+    Route::get('/kelas/tambah', [KelasController::class, 'add'])->name('kelas.add');
+    Route::post('/kelas/simpan', [KelasController::class, 'addAction'])->name('kelas.store');
+    Route::get('/kelas/edit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
+    Route::post('/kelas/update/{id}', [KelasController::class, 'update'])->name('kelas.update');
+    Route::get('/kelas/delete/{id}', [KelasController::class, 'delete'])->name('kelas.delete');
 });

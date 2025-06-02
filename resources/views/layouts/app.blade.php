@@ -194,12 +194,12 @@
                         <div class="collapse" id="kelas">
                             <ul class="nav nav-collapse">
                             <li>
-                                <a href="components/avatars.html">
+                                <a href="/kelas">
                                 <span class="sub-item">Data Kelas</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="/kelas/tambah">
                                 <span class="sub-item">Input Kelas</span>
                                 </a>
                             </li>

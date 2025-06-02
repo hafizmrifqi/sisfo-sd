@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kelas_id')->nullable()->constrained('kelas')->onDelete('cascade');
             $table->foreignId('siswa_id')->nullable()->constrained('siswas')->onDelete('cascade');
+
+            // Jika ada foreign key untuk siswa_id, pastikan tabel siswas sudah ada
+            $table->unique(['kelas_id', 'siswa_id']);
+
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif'); // Status keanggotaan, bisa 'aktif', 'non-aktif', dll.
             $table->timestamps();
         });

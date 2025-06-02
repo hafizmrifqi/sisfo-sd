@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nip')->unique()->nullable(); // Nomor Induk Pegawai
             $table->string('nama');
-            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir');
             $table->text('alamat')->nullable();
