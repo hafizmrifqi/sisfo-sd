@@ -34,9 +34,9 @@
                             <div class="form-group">
                                 <label for="wali_kelas">Pilih Wali Kelas</label>
                                 <select name="wali_kelas_id" id="wali_kelas_id" class="form-select" required>
-                                    <option value="">-- Pilih Wali Kelas --</option>
+                                    <option value="belum">-- Pilih Wali Kelas --</option>
                                     @foreach ($guru as $item)
-                                        <option value="{{ $item->id }}" {{ old('wali_kelas_id') == $item->id ? 'selected' : '' }}>
+                                        <option value="{{ $item->id }}">
                                             {{ $item->nama }}
                                         </option>
                                     @endforeach

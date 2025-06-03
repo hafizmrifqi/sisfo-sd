@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Kelas extends Model
 {
     protected $fillable = [
-        'nama_kelas', 'walas_id', 'tahun_ajaran',
+        'nama_kelas', 'wali_kelas_id', 'tahun_ajaran',
     ];
 
     public function walas()
     {
-        return $this->belongsTo(Guru::class, 'walas_id');
+        return $this->belongsTo(Guru::class, 'wali_kelas_id');
     }
 
     public function siswa()
