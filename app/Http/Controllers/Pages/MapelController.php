@@ -51,10 +51,12 @@ class MapelController extends Controller
     public function edit($id)
     {
         $mapel = Mapel::findOrFail($id);
+        $guru = Guru::all();
 
         $data = [
             'title' => 'Edit Mata Pelajaran',
             'mapel' => $mapel,
+            'guru' => $guru, // Daftar guru untuk pilihan
         ];
 
         return view('pages.mapel.edit', $data);
