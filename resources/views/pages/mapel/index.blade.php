@@ -16,7 +16,8 @@
                 <tr>
                     <th>No</th>
                     <th>Kode Mapel</th>
-                    <th>Nama</th>
+                    <th>Nama Mata Pelajaran</th>
+                    <th>Nama Pengajar</th>
                     <th>Kelas</th>
                     <th>Aksi</th>
                 </tr>
@@ -27,7 +28,7 @@
                     <td>{{ $loop->iteration + ($mapels->perPage() * ($mapels->currentPage() - 1)) }}</td>
                     <td>{{ $mapel->kode_mapel }}</td>
                     <td>{{ $mapel->nama_mapel}}</td>
-                    <td>{{ $mapel->email }}</td>
+                    <td>{{ optional($mapel->guru)->nama ?? 'Tidak ada Pengajar' }}</td>
                     <td>{{ $mapel->tingkat }}</td>
                     <td class="d-flex">
                         <a href="{{ route('mapel.edit', $mapel->id) }}" class="btn btn-sm btn-warning m-1">Edit</a>
@@ -40,14 +41,14 @@
 
         <!-- Paginasi -->
         <div class="d-flex justify-content-center">
-            {{ $gurus->links() }}
+            {{ $mapels->links() }}
         </div>
     </div>
 </div>
 
 <script>
 $(document).ready(function() {
-    $('#guruTable').DataTable({
+    $('#mapelTable').DataTable({
         paging: true,
         searching: true,
         ordering: true,

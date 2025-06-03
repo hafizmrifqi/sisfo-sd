@@ -150,12 +150,12 @@
                         <div class="collapse" id="mapel">
                             <ul class="nav nav-collapse">
                             <li>
-                                <a href="components/avatars.html">
+                                <a href="/mapel">
                                 <span class="sub-item">Data Mata Pelajaran</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="/mapel/tambah">
                                 <span class="sub-item">Input Mata Pelajaran </span>
                                 </a>
                             </li>

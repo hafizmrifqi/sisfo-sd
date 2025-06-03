@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Guru;
 use App\Models\Mapel;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class MapelController extends Controller
 {
     public function index()
     {
-        $mapels = Mapel::orderBy('created_at', 'desc')->paginate(15);
+        // $mapels = Mapel::orderBy('created_at', 'desc')->paginate(15);
+        $mapels = Mapel::with('guru')->orderBy('created_at', 'desc')->paginate(15);
 
         $data = [
             'title' => 'Mata Pelajaran',
@@ -22,8 +24,11 @@ class MapelController extends Controller
 
     public function add()
     {
+        $guru = Guru::all();
+
         $data = [
             'title' => 'Tambah Mata Pelajaran',
+            'guru' => $guru, // Daftar guru untuk pilihan
         ];
 
         return view('pages.mapel.add', $data);
