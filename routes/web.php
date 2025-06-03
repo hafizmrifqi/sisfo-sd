@@ -3,6 +3,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Pages\GuruController;
 use App\Http\Controllers\Pages\KelasController;
+use App\Http\Controllers\Pages\MapelController;
 use App\Http\Controllers\Pages\SiswaController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
@@ -53,4 +54,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/kelas/{id}/anggota', [KelasController::class, 'anggota'])->name('kelas.anggota');
     Route::post('/kelas/{id}/tambah-siswa', [KelasController::class, 'tambahSiswa'])->name('kelas.tambah.siswa');
     Route::delete('/kelas/{id}/hapus-siswa/{siswaId}', [KelasController::class, 'hapusSiswa'])->name('kelas.hapus.siswa');
+
+    // Mata Pelajaran
+    Route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
+    Route::get('/mapel/tambah', [MapelController::class, 'add'])->name('mapel.add');
+    Route::post('/mapel/simpan', [MapelController::class, 'addAction'])->name('mapel.store');
+    Route::get('/mapel/edit/{id}', [MapelController::class, 'edit'])->name('mapel.edit');
+    Route::post('/mapel/update/{id}', [MapelController::class, 'update'])->name('mapel.update');
+    Route::get('/mapel/delete/{id}', [MapelController::class, 'delete'])->name('mapel.delete');
 });
