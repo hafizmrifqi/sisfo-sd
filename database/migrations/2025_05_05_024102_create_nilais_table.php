@@ -24,8 +24,9 @@ return new class extends Migration
             $table->float('nilai')->default(0); // Misalnya 85.5
 
             // Opsional: tambahkan semester dan tahun ajaran
+            $table->enum('jenis', ['harian', 'uts', 'uas'])->default('harian'); // Jenis nilai: harian, UTS, UAS
             $table->string('semester')->nullable(); // Contoh: "Ganjil", "Genap"
-            $table->year('tahun_ajaran')->default(date('Y')); // Contoh: 2025
+            $table->integer('tahun_ajaran')->default(date('Y')); // Contoh: 2025
 
             // Timestamps
             $table->timestamps();

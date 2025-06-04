@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Nilai extends Model
 {
     protected $fillable = [
-        'siswa_id', 'mapel_id', 'nilai', 'semester', 'tahun_ajaran'
+        'siswa_id', 'mapel_id', 'nilai', 'jenis', 'semester', 'tahun_ajaran'
     ];
 
     public function siswa()
