@@ -172,12 +172,12 @@
                         <div class="collapse" id="nilai">
                             <ul class="nav nav-collapse">
                             <li>
-                                <a href="components/avatars.html">
+                                <a href="/nilai">
                                 <span class="sub-item">Data Nilai Ujian</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
+                                <a href="/nilai/tambah">
                                 <span class="sub-item">Input Nilai Ujian</span>
                                 </a>
                             </li>

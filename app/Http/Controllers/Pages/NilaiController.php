@@ -1,0 +1,103 @@
+<?php
+
+namespace App\Http\Controllers\Pages;
+
+use App\Http\Controllers\Controller;
+use App\Models\Mapel;
+use App\Models\Nilai;
+use App\Models\Siswa;
+use Illuminate\Http\Request;
+
+class NilaiController extends Controller
+{
+    public function index()
+    {
+        // $nilais = Nilai::with(['siswa', 'mapel'])->get();
+        $nilais = Nilai::orderBy('created_at', 'desc')->paginate(25);
+
+        $data = [
+            'title' => 'Nilai Siswa',
+            'nilais' => $nilais,
+        ];
+
+        return view('pages.nilai.index', $data);
+    }
+
+    public function add()
+    {
+        $siswa = Siswa::all();
+        $mapel = Mapel::all();
+
+        $data = [
+            'title' => 'Tambah Nilai Siswa',
+            'siswa' => $siswa,
+            'mapel' => $mapel,
+        ];
+
+        return view('pages.nilai.add', $data);
+    }
+
+    public function addAction(Request $request)
+    {
+        $request->validate([
+            'siswa_id' => 'required|exists:siswa,id',
+            'mapel_id' => 'required|exists:mapels,id',
+            'nilai' => 'required|numeric|min:0|max:100',
+            'jenis' => 'required|in:harian,uts,uas',
+            'semester' => 'nullable|string|max:20',
+            'tahun_ajaran' => 'nullable|integer|min:2000|max:'.(date('Y') + 1),
+        ]);
+
+        Nilai::create([
+            'siswa_id' => $request->siswa_id,
+            'mapel_id' => $request->mapel_id,
+            'nilai' => $request->nilai,
+            'jenis' => $request->jenis,
+            'semester' => $request->semester,
+            'tahun_ajaran' => $request->tahun_ajaran ?: date('Y'),
+        ]);
+
+        return redirect()->route('nilai.index')->with('success', 'Nilai berhasil ditambahkan.');
+    }
+
+    public function edit($id)
+    {
+        $nilai = Nilai::findOrFail($id);
+        $siswa = Siswa::all();
+        $mapel = Mapel::all();
+
+        $data = [
+            'title' => 'Edit Nilai Siswa',
+            'nilai' => $nilai,
+            'siswa' => $siswa,
+            'mapel' => $mapel,
+        ];
+
+        return view('pages.nilai.edit', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $nilai = Nilai::findOrFail($id);
+
+        $request->validate([
+            'siswa_id' => 'required|exists:siswa,id',
+            'mapel_id' => 'required|exists:mapels,id',
+            'nilai' => 'required|numeric|min:0|max:100',
+            'jenis' => 'required|in:harian,uts,uas',
+            'semester' => 'nullable|string|max:20',
+            'tahun_ajaran' => 'nullable|integer|min:2000|max:'.(date('Y') + 1),
+        ]);
+
+        $nilai->update([
+            'siswa_id' => $request->siswa_id,
+            'mapel_id' => $request->mapel_id,
+            'nilai' => $request->nilai,
+            'jenis' => $request->jenis,
+            'semester' => $request->semester,
+            'tahun_ajaran' => $request->tahun_ajaran ?: date('Y'),
+        ]);
+
+        return redirect()->route('nilai.index')->with('success', 'Nilai berhasil diperbarui.');
+    }
+}

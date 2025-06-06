@@ -62,4 +62,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/mapel/edit/{id}', [MapelController::class, 'edit'])->name('mapel.edit');
     Route::post('/mapel/update/{id}', [MapelController::class, 'update'])->name('mapel.update');
     Route::get('/mapel/delete/{id}', [MapelController::class, 'delete'])->name('mapel.delete');
+
+    // Nilai
+    Route::get('/nilai', [App\Http\Controllers\Pages\NilaiController::class, 'index'])->name('nilai.index');
+    Route::get('/nilai/tambah', [App\Http\Controllers\Pages\NilaiController::class, 'add'])->name('nilai.add');
+    Route::post('/nilai/simpan', [App\Http\Controllers\Pages\NilaiController::class, 'addAction'])->name('nilai.store');
+    Route::get('/nilai/edit/{id}', [App\Http\Controllers\Pages\NilaiController::class, 'edit'])->name('nilai.edit');
+    Route::post('/nilai/update/{id}', [App\Http\Controllers\Pages\NilaiController::class, 'update'])->name('nilai.update');
+    Route::get('/nilai/delete/{id}', [App\Http\Controllers\Pages\NilaiController::class, 'delete'])->name('nilai.delete');
 });
