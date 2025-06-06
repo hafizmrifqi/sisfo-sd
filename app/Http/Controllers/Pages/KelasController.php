@@ -53,12 +53,14 @@ class KelasController extends Controller
     {
         $request->validate([
             'nama_kelas' => 'required|string|max:100',
+            'tingkat' => 'required|in:1,2,3,4,5,6', // Pastikan tingkat sesuai dengan yang diinginkan
             'wali_kelas_id' => 'nullable|exists:gurus,id',
             'tahun_ajaran' => 'required|digits:4',
         ]);
 
         Kelas::create([
             'nama_kelas' => $request->nama_kelas,
+            'tingkat' => $request->tingkat,
             'wali_kelas_id' => $request->wali_kelas_id,
             'tahun_ajaran' => $request->tahun_ajaran,
         ]);
@@ -85,6 +87,7 @@ class KelasController extends Controller
     {
         $request->validate([
             'nama_kelas' => 'required|string|max:100',
+            'tingkat' => 'required|in:1,2,3,4,5,6', // Pastikan tingkat sesuai dengan yang diinginkan
             'wali_kelas_id' => 'nullable|exists:gurus,id',
             'tahun_ajaran' => 'required|digits:4',
         ]);
@@ -92,6 +95,7 @@ class KelasController extends Controller
         $kelas = Kelas::findOrFail($id);
         $kelas->update([
             'nama_kelas' => $request->nama_kelas,
+            'tingkat' => $request->tingkat,
             'wali_kelas_id' => $request->wali_kelas_id,
             'tahun_ajaran' => $request->tahun_ajaran,
         ]);

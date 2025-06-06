@@ -16,6 +16,7 @@
                 <tr>
                     <th>No</th>
                     <th>Nama Kelas</th>
+                    <th>Tingkat</th>
                     <th>Tahun Ajaran</th>
                     <th>Wali Kelas</th>
                     <th>Aksi</th>
@@ -26,6 +27,7 @@
                 <tr>
                     <td>{{ $loop->iteration + ($kelases->perPage() * ($kelases->currentPage() - 1)) }}</td>
                     <td>{{ $kelas->nama_kelas }}</td>
+                    <td>{{ $kelas->tingkat }}</td>
                     <td>{{ $kelas->tahun_ajaran }}</td>
                     <td>{{ optional($kelas->walas)->nama ?? 'Tidak ada wali kelas' }}</td>
                     <td class="d-flex">

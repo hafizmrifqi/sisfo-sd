@@ -35,6 +35,7 @@
                     <td class="d-flex">
                         <a href="{{ route('siswa.edit', $siswa->id) }}" class="btn btn-sm btn-warning m-1">Edit</a>
                         <a href="{{ route('siswa.delete', $siswa->id) }}" class="btn btn-sm btn-danger m-1" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
+                        <a href="{{ route('siswa.detail', $siswa->id) }}" class="btn btn-sm btn-primary m-1">Detail</a>
                     </td>
                 </tr>
                 @endforeach

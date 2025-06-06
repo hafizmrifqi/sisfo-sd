@@ -32,6 +32,20 @@
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
+                                <label for="tingkat">Tingkat / Kelas</label>
+                                <select class="form-select form-control" id="tingkat" name="tingkat">
+                                    <option>-- Pilih Tingkat / Kelas --</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
                                 <label for="wali_kelas">Pilih Wali Kelas</label>
                                 <select name="wali_kelas_id" id="wali_kelas_id" class="form-select" required>
                                     <option value="belum">-- Pilih Wali Kelas --</option>
