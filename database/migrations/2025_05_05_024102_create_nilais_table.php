@@ -31,8 +31,6 @@ return new class extends Migration
             // Timestamps
             $table->timestamps();
 
-            // Agar tidak ada duplikasi nilai untuk satu siswa dan mapel di waktu tertentu
-            $table->unique(['siswa_id', 'mapel_id', 'semester', 'tahun_ajaran']);
         });
     }
 
