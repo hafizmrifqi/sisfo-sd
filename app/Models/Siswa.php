@@ -12,7 +12,7 @@ class Siswa extends Model
         'nipd', 'nama', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'nama_ayah', 'nama_ibu'
     ];
 
-    public function nilais()
+    public function nilai()
     {
         return $this->hasMany(Nilai::class);
     }
@@ -21,4 +21,5 @@ class Siswa extends Model
     {
         return $this->belongsToMany(Kelas::class, 'anggota_kelas')->withTimestamps();
     }
+
 }

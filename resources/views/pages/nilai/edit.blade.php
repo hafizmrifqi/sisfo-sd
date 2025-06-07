@@ -56,6 +56,19 @@
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
+                                <label for="kelas_id">Pilih Kelas</label>
+                                <select name="kelas_id" id="kelas_id" class="form-select" required>
+                                    <option value="">-- Pilih Kelas --</option>
+                                    @foreach ($kelas as $item)
+                                        <option value="{{ $item->id }}">
+                                            {{ $item->nama_kelas }} (Tingkat {{ $item->tingkat }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
                                 <label for="nilai">Nilai</label>
                                 <input
                                     type="text"

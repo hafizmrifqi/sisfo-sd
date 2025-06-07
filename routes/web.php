@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Pages\GuruController;
 use App\Http\Controllers\Pages\KelasController;
 use App\Http\Controllers\Pages\MapelController;
+use App\Http\Controllers\Pages\RapotController;
 use App\Http\Controllers\Pages\SiswaController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
@@ -70,4 +71,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/nilai/edit/{id}', [App\Http\Controllers\Pages\NilaiController::class, 'edit'])->name('nilai.edit');
     Route::post('/nilai/update/{id}', [App\Http\Controllers\Pages\NilaiController::class, 'update'])->name('nilai.update');
     Route::get('/nilai/delete/{id}', [App\Http\Controllers\Pages\NilaiController::class, 'delete'])->name('nilai.delete');
+
+    Route::get('/siswa/{id}/generate-rapot', [SiswaController::class, 'generateRapot'])->name('siswa.generateRapot');
 });

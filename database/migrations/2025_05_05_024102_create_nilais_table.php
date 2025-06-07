@@ -20,6 +20,8 @@ return new class extends Migration
             // Relasi ke mata pelajaran
             $table->foreignId('mapel_id')->constrained('mapels')->onDelete('cascade');
 
+            $table->foreignId('kelas_id')->nullable()->constrained('kelas')->onDelete('set null');
+
             // Nilai
             $table->float('nilai')->default(0); // Misalnya 85.5
 

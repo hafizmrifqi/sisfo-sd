@@ -19,4 +19,10 @@ class Nilai extends Model
     {
         return $this->belongsTo(Mapel::class, 'mapel_id');
     }
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
+
 }

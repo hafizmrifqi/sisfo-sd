@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Nilai;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SiswaController extends Controller
 {
@@ -23,15 +25,29 @@ class SiswaController extends Controller
 
     public function detail($id)
     {
-        // ambil data
-        $siswa = Siswa::findOrFail($id);
+        $title = 'Detail Siswa';
+        $siswa = Siswa::with(['nilai.kelas', 'kelas'])->findOrFail($id);
 
-        $data = [
-            'title' => 'Detail Siswa',
-            'siswa' => $siswa
-        ];
+        $rapotOptions = [];
 
-        return view('pages.siswa.detail', $data);
+        foreach ($siswa->nilai as $n) {
+            if (!$n->kelas || !$n->jenis_nilai || !$n->semester) continue;
+
+            $key = "{$n->jenis_nilai}-{$n->kelas->tingkat}-{$n->semester}";
+
+            if (!isset($rapotOptions[$key])) {
+                $rapotOptions[$key] = [
+                    'jenis_nilai' => $n->jenis_nilai,
+                    'tingkat' => $n->kelas->tingkat,
+                    'semester' => $n->semester,
+                    'kelas_id' => $n->kelas->id,
+                ];
+            }
+
+            dd($rapotOptions); // <- debug hanya akan menampilkan satu iterasi lalu berhenti
+        }
+
+        return view('pages.siswa.detail', compact('siswa', 'rapotOptions', 'title'));
     }
 
     public function add()
@@ -120,5 +136,44 @@ class SiswaController extends Controller
         $siswa->delete();
 
         return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil dihapus.');
+    }
+
+    // Generate rapot
+    public function generateRapot(Request $request, $id)
+    {
+        $siswa = Siswa::findOrFail($id);
+
+        $request->validate([
+            'jenis' => 'required|in:harian,uts,uas',
+            'tingkat' => 'required|in:1,2,3,4,5,6',
+            'semester' => 'required|in:Ganjil,Genap',
+        ]);
+
+        $jenis = $request->jenis;
+        $tingkat = $request->tingkat;
+        $semester = $request->semester;
+
+        $nilaiList = Nilai::with('mapel')
+            ->where('siswa_id', $siswa->id)
+            ->where('jenis', $jenis)
+            ->where('semester', $semester)
+            ->whereHas('mapel', function ($q) use ($tingkat) {
+                $q->where('tingkat', $tingkat);
+            })
+            ->get();
+
+        if ($nilaiList->isEmpty()) {
+            return back()->with('error', 'Tidak ada nilai untuk kriteria yang dipilih.');
+        }
+
+        $pdf = Pdf::loadView('pdf.rapot', [
+            'siswa' => $siswa,
+            'nilaiList' => $nilaiList,
+            'jenis' => $jenis,
+            'tingkat' => $tingkat,
+            'semester' => $semester,
+        ]);
+
+        return $pdf->download("Rapot_{$siswa->nama}_{$jenis}_Kelas{$tingkat}_{$semester}.pdf");
     }
 }

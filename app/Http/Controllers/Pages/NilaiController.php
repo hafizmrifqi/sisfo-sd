@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Nilai;
 use App\Models\Siswa;
@@ -27,14 +28,14 @@ class NilaiController extends Controller
     {
         $siswa = Siswa::all();
         $mapel = Mapel::all();
+        $kelas = Kelas::all(); // Ambil semua kelas untuk dropdown
 
-        $data = [
+        return view('pages.nilai.add', [
             'title' => 'Tambah Nilai Siswa',
             'siswa' => $siswa,
             'mapel' => $mapel,
-        ];
-
-        return view('pages.nilai.add', $data);
+            'kelas' => $kelas,
+        ]);
     }
 
     public function addAction(Request $request)
@@ -42,15 +43,17 @@ class NilaiController extends Controller
         $request->validate([
             'siswa_id' => 'required|exists:siswa,id',
             'mapel_id' => 'required|exists:mapels,id',
+            'kelas_id' => 'required|exists:kelas,id',
             'nilai' => 'required|numeric|min:0|max:100',
             'jenis' => 'required|in:harian,uts,uas',
             'semester' => 'nullable|string|max:20',
-            'tahun_ajaran' => 'nullable|integer|min:2000|max:'.(date('Y') + 1),
+            'tahun_ajaran' => 'nullable|integer|min:2000|max:' . (date('Y') + 1),
         ]);
 
         Nilai::create([
             'siswa_id' => $request->siswa_id,
             'mapel_id' => $request->mapel_id,
+            'kelas_id' => $request->kelas_id, // Simpan kelas_id
             'nilai' => $request->nilai,
             'jenis' => $request->jenis,
             'semester' => $request->semester,
@@ -62,18 +65,18 @@ class NilaiController extends Controller
 
     public function edit($id)
     {
-        $nilai = Nilai::findOrFail($id);
+        $nilai = Nilai::with('siswa', 'mapel', 'kelas')->findOrFail($id);
         $siswa = Siswa::all();
         $mapel = Mapel::all();
+        $kelas = Kelas::all();
 
-        $data = [
+        return view('pages.nilai.edit', [
             'title' => 'Edit Nilai Siswa',
             'nilai' => $nilai,
             'siswa' => $siswa,
             'mapel' => $mapel,
-        ];
-
-        return view('pages.nilai.edit', $data);
+            'kelas' => $kelas,
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -83,15 +86,17 @@ class NilaiController extends Controller
         $request->validate([
             'siswa_id' => 'required|exists:siswa,id',
             'mapel_id' => 'required|exists:mapels,id',
+            'kelas_id' => 'required|exists:kelas,id',
             'nilai' => 'required|numeric|min:0|max:100',
             'jenis' => 'required|in:harian,uts,uas',
             'semester' => 'nullable|string|max:20',
-            'tahun_ajaran' => 'nullable|integer|min:2000|max:'.(date('Y') + 1),
+            'tahun_ajaran' => 'nullable|integer|min:2000|max:' . (date('Y') + 1),
         ]);
 
         $nilai->update([
             'siswa_id' => $request->siswa_id,
             'mapel_id' => $request->mapel_id,
+            'kelas_id' => $request->kelas_id, // Update kelas_id
             'nilai' => $request->nilai,
             'jenis' => $request->jenis,
             'semester' => $request->semester,
