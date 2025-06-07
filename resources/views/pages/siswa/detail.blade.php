@@ -1,33 +1,64 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Detail Siswa</h1>
-    <p><strong>Nama:</strong> {{ $siswa->nama }}</p>
-    <p><strong>NIPD:</strong> {{ $siswa->nipd }}</p>
+    <h1>Detail Informasi Siswa</h1>
 
-    <h2>Generate Rapot</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <img src="{{ asset('assets/img/profile.png') }}" alt="" style="max-width: 200px;">
+                        <div class="m-3 p-3">
+                            <h2>{{ $siswa->nama }}</h2>
+                            <p><strong>NIPD:</strong> {{ $siswa->nipd }}</p>
+                            <p><strong>Jenis Kelamin:</strong> {{ $siswa->jenis_kelamin }}</p>
+                            <p><strong>Tanggal Lahir:</strong> {{ $siswa->tanggal_lahir }}</p>
+                            <p><strong>Alamat:</strong> {{ $siswa->alamat }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                <h2>Generate Nilai Rapot</h2>
+                </div>
+                <div class="card-body">
+                <form action="{{ route('siswa.generateRapot', $siswa->id) }}" method="GET">
+                    <div class="form-group">
+                        <label for="jenis">Jenis Nilai:</label>
+                        <select name="jenis" id="jenis" class="form-select form-control">
+                            <option value="harian">Harian</option>
+                            <option value="uts">UTS</option>
+                            <option value="uas">UAS</option>
+                        </select>
+                    </div>
 
-    <form action="{{ route('siswa.generateRapot', $siswa->id) }}" method="GET">
-        <label for="jenis">Jenis Nilai:</label>
-        <select name="jenis" id="jenis">
-            <option value="harian">Harian</option>
-            <option value="uts">UTS</option>
-            <option value="uas">UAS</option>
-        </select>
+                    <div class="form-group">
+                        <label for="tingkat">Tingkat:</label>
+                        <select name="tingkat" id="tingkat" class="form-select form-control">
+                            @for ($i = 1; $i <= 6; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
 
-        <label for="tingkat">Tingkat:</label>
-        <select name="tingkat" id="tingkat">
-            @for ($i = 1; $i <= 6; $i++)
-                <option value="{{ $i }}">{{ $i }}</option>
-            @endfor
-        </select>
+                    <div class="form-group">
+                        <label for="semester">Semester:</label>
+                        <select name="semester" id="semester" class="form-select form-control">
+                            <option value="Ganjil">Ganjil</option>
+                            <option value="Genap">Genap</option>
+                        </select>
+                    </div>
 
-        <label for="semester">Semester:</label>
-        <select name="semester" id="semester">
-            <option value="Ganjil">Ganjil</option>
-            <option value="Genap">Genap</option>
-        </select>
-
-        <button type="submit" class="btn btn-primary">Generate PDF</button>
-    </form>
+                    <div class="card-action">
+                        <button type="submit" class="btn btn-primary">Generate PDF</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
