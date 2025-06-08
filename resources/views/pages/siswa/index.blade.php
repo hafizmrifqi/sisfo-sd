@@ -9,7 +9,13 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
+        <form action="{{ url('siswa') }}" method="GET" class="mb-3">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Cari nama siswa..." value="{{ request('q') }}">
+                <button class="btn btn-primary" type="submit">Cari</button>
+            </div>
+        </form>
         <!-- Table -->
         <table id="siswaTable" class="display table table-bordered table-responsive" style="width:100%">
             <thead>
@@ -24,7 +30,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($siswas as $key => $siswa)
+                @forelse ($siswas as $key => $siswa)
                 <tr>
                     <td>{{ $loop->iteration + ($siswas->perPage() * ($siswas->currentPage() - 1)) }}</td>
                     <td>{{ $siswa->nipd }}</td>
@@ -38,7 +44,11 @@
                         <a href="{{ route('siswa.detail', $siswa->id) }}" class="btn btn-sm btn-primary m-1">Detail</a>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="7" class="text-center">Tidak ada data ditemukan.</td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
 
@@ -49,25 +59,4 @@
     </div>
 </div>
 
-<script>
-$(document).ready(function() {
-    $('#siswaTable').DataTable({
-        paging: true,
-        searching: true,
-        ordering: true,
-        info: true,
-        language: {
-            search: "Cari:",
-            paginate: {
-                first: "Pertama",
-                last: "Terakhir",
-                next: "Selanjutnya",
-                previous: "Sebelumnya"
-            },
-            lengthMenu: "Tampilkan _MENU_ data per halaman",
-            info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
-        }
-    });
-});
-</script>
 @endsection

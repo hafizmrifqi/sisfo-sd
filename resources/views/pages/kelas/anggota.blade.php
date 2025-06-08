@@ -67,9 +67,16 @@
             <div class="card-body">
                 <h5>Alat Laporan :</h5>
                 <a href="#" class="btn btn-secondary">Cetak PDF</a>
-                <a href="#" class="btn btn-success">Generate Excel</a>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    new TomSelect('#siswa_id', {
+        create: false,
+        placeholder: "-- Pilih Siswa --",
+        allowEmptyOption: true
+    });
+</script>
 @endsection

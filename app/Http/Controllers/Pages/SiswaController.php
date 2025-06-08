@@ -10,10 +10,17 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class SiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Ambil 25 data siswa per halaman, urut dari yang terbaru
-        $siswas = Siswa::orderBy('created_at', 'desc')->paginate(25);
+        $query = Siswa::orderBy('created_at', 'desc');
+
+        // Jika ada keyword pencarian
+        if ($request->has('q') && $request->q != '') {
+            $query->where('nama', 'like', '%' . $request->q . '%');
+        }
+
+        $siswas = $query->paginate(25);
+        $siswas->appends($request->only('q')); // menjaga query saat pagination
 
         $data = [
             'title' => 'Data Siswa',

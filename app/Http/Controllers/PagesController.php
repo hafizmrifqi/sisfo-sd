@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -10,6 +12,8 @@ class PagesController extends Controller
     {
         $data = [
             'title' => 'SIAD Sekolah | SDIT Arofatul Ulum',
+            'siswa' => Siswa::count(),
+            'guru' => Guru::count(),
         ];
 
         return view('index', $data);

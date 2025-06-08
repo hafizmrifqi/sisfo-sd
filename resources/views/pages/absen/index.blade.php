@@ -19,11 +19,9 @@
                             <div class="form-group">
                                 <label for="siswa_id">Pilih Siswa</label>
                                 <select name="siswa_id" id="siswa_id" class="form-select" required>
-                                    <option value="belum">-- Pilih Siswa --</option>
+                                    <option value="">-- Pilih Siswa --</option>
                                     @foreach ($siswa as $item)
-                                        <option value="{{ $item->id }}">
-                                            {{ $item->nama }} {{ $item->nipd ? '(' . $item->nipd . ')' : '' }}
-                                        </option>
+                                        <option value="{{ $item->id }}">{{ $item->nama }} | {{ $item->nipd }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -102,7 +100,6 @@
                     <td>{{ $absen->keterangan }}</td>
                     <td class="d-flex">
                         <a href="{{ route('absen.delete', $absen->id) }}" class="btn btn-sm btn-danger m-1" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
-
                     </td>
                 </tr>
                 @endforeach
@@ -117,11 +114,10 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        $('#siswa_id').select2({
-            placeholder: "-- Pilih Siswa --",
-            allowClear: true
-        });
+    new TomSelect('#siswa_id', {
+        create: false,
+        placeholder: "-- Pilih Siswa --",
+        allowEmptyOption: true
     });
 </script>
 @endsection
