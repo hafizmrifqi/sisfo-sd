@@ -73,4 +73,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/nilai/delete/{id}', [App\Http\Controllers\Pages\NilaiController::class, 'delete'])->name('nilai.delete');
 
     Route::get('/siswa/{id}/generate-rapot', [SiswaController::class, 'generateRapot'])->name('siswa.generateRapot');
+
+    // Absen
+    Route::get('/absen', [App\Http\Controllers\Pages\AbsenController::class, 'index'])->name('absen.index');
+    Route::post('/absen/simpan', [App\Http\Controllers\Pages\AbsenController::class, 'addAction'])->name('absen.store');
+    Route::get('/absen/edit/{id}', [App\Http\Controllers\Pages\AbsenController::class, 'edit'])->name('absen.edit');
+    Route::get('/absen/detail/{id}', [App\Http\Controllers\Pages\AbsenController::class, 'detail'])->name('absen.detail');
+    Route::post('/absen/update/{id}', [App\Http\Controllers\Pages\AbsenController::class, 'update'])->name('absen.update');
+    Route::get('/absen/delete/{id}', [App\Http\Controllers\Pages\AbsenController::class, 'delete'])->name('absen.delete');
 });

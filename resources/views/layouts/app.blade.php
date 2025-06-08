@@ -9,7 +9,7 @@
     />
     <link
       rel="icon"
-      href="favicon.ico"
+      href="{{ asset('favicon.ico') }}"
       type="image/x-icon"
     />
 
@@ -37,10 +37,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}" />
-    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.bootstrap5.min.css">
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="assets/css/demo.css" />
+
   </head>
   <body>
     <div class="wrapper">
@@ -111,7 +112,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/siswa/absensi">
+                                <a href="/absen">
                                 <span class="sub-item">Absen Siswa</span>
                                 </a>
                             </li>

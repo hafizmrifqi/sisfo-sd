@@ -55,17 +55,12 @@
     <div class="row">
         <h3 class="fw-bold mb-3">Akses Cepat</h3>
         <div class="col-sm-6 col-md-3">
-            <a href="#" class="btn btn-label-warning btn-round-sm me-2 mb-2">
+            <a href="/absen" class="btn btn-label-warning btn-round-sm me-2 mb-2">
                 <b>Absensi Siswa</b>
             </a>
         </div>
         <div class="col-sm-6 col-md-3">
-            <a href="#" class="btn btn-label-warning btn-round-sm me-2 mb-2">
-                <b>Absensi Guru</b>
-            </a>
-        </div>
-        <div class="col-sm-6 col-md-3">
-            <a href="#" class="btn btn-label-warning btn-round-sm me-2 mb-2">
+            <a href="/nilai" class="btn btn-label-warning btn-round-sm me-2 mb-2">
                 <b>Cek Nilai Siswa</b>
             </a>
         </div>
