@@ -9,7 +9,17 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4">
+                <form action="{{ url('nilai') }}" method="GET" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Cari nama siswa..." value="{{ request('q') }}">
+                        <button class="btn btn-primary" type="submit">Cari</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <!-- Table -->
         <table id="nilaiTable" class="display table table-bordered table-responsive" style="width:100%">
             <thead>
@@ -26,7 +36,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($nilais as $key => $nilai)
+                @forelse ($nilais as $key => $nilai)
                 <tr>
                     <td>{{ $loop->iteration + ($nilais->perPage() * ($nilais->currentPage() - 1)) }}</td>
                     <td>{{ optional($nilai->siswa)->nama ?? 'Tidak ada nama siswa' }}</td>
@@ -42,7 +52,11 @@
 
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                <tr>
+                    <td colspan="9" class="text-center">Tidak ada data ditemukan.</td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
 

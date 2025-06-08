@@ -11,14 +11,23 @@ use Illuminate\Http\Request;
 
 class NilaiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // $nilais = Nilai::with(['siswa', 'mapel'])->get();
-        $nilais = Nilai::orderBy('created_at', 'desc')->paginate(25);
+        $query = Nilai::with(['siswa', 'mapel'])->orderBy('created_at', 'desc');
+
+        // Jika ada keyword pencarian berdasarkan nama siswa
+        if ($request->has('q') && $request->q != '') {
+            $query->whereHas('siswa', function ($q) use ($request) {
+                $q->where('nama', 'like', '%' . $request->q . '%');
+            });
+        }
+
+        $nilais = $query->paginate(25);
+        $nilais->appends($request->only('q'));
 
         $data = [
             'title' => 'Nilai Siswa',
-            'nilais' => $nilais,
+            'nilais' => $nilais
         ];
 
         return view('pages.nilai.index', $data);
