@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use App\Models\Kelas;
 use App\Models\Siswa;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -160,6 +161,15 @@ class KelasController extends Controller
         $kelas->siswa()->detach($siswaId);
 
         return back()->with('success', 'Siswa berhasil dihapus dari kelas.');
+    }
+
+    public function cetakPdf($id)
+    {
+        $kelas = Kelas::with(['siswa', 'walas'])->findOrFail($id); // pastikan relasi guru dan siswa sudah didefinisikan
+
+        $pdf = Pdf::loadView('pdf.kelas', compact('kelas'))->setPaper('a4', 'portrait');
+
+        return $pdf->stream('anggota-kelas-' . $kelas->nama_kelas . '.pdf');
     }
 }
 

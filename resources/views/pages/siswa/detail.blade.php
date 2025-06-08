@@ -25,8 +25,8 @@
                 <div class="card-header">
                 <h2>Generate Nilai Rapot</h2>
                 </div>
-                <div class="card-body">
                 <form action="{{ route('siswa.generateRapot', $siswa->id) }}" method="GET">
+                <div class="card-body">
                     <div class="form-group">
                         <label for="jenis">Jenis Nilai:</label>
                         <select name="jenis" id="jenis" class="form-select form-control">
@@ -53,11 +53,11 @@
                         </select>
                     </div>
 
-                    <div class="card-action">
-                        <button type="submit" class="btn btn-primary">Generate PDF</button>
-                    </div>
-                </form>
                 </div>
+                <div class="card-action">
+                    <button type="submit" class="btn btn-primary">Generate PDF</button>
+                </div>
+            </form>
             </div>
         </div>
     </div>

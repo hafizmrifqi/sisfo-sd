@@ -66,7 +66,7 @@
         <div class="card">
             <div class="card-body">
                 <h5>Alat Laporan :</h5>
-                <a href="#" class="btn btn-secondary">Cetak PDF</a>
+                <a href="{{ route('kelas.cetak.pdf', $kelas->id) }}" target="_blank" class="btn btn-secondary">Cetak PDF</a>
             </div>
         </div>
     </div>

@@ -56,6 +56,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/kelas/{id}/tambah-siswa', [KelasController::class, 'tambahSiswa'])->name('kelas.tambah.siswa');
     Route::delete('/kelas/{id}/hapus-siswa/{siswaId}', [KelasController::class, 'hapusSiswa'])->name('kelas.hapus.siswa');
 
+    Route::get('/kelas/{id}/pdf', [KelasController::class, 'cetakPdf'])->name('kelas.cetak.pdf');
+
     // Mata Pelajaran
     Route::get('/mapel', [MapelController::class, 'index'])->name('mapel.index');
     Route::get('/mapel/tambah', [MapelController::class, 'add'])->name('mapel.add');
