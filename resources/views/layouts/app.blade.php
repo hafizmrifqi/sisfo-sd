@@ -210,6 +210,60 @@
                         </div>
                     </li>
 
+                    {{-- Kompetensi --}}
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#kompetensi">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Kompetensi</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="kompetensi">
+                            <ul class="nav nav-collapse">
+                            <li>
+                                <a href="/kompetensi">
+                                <span class="sub-item">Data Kompetensi</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kompetensi/tambah">
+                                <span class="sub-item">Input Kompetensi</span>
+                                </a>
+                            </li>
+                        </div>
+                    </li>
+
+                    {{-- bagian untuk admin saja --}}
+                    @if(Auth::user()->role == 'superadmin')
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Data</h4>
+                    </li>
+
+                    {{-- Users --}}
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#users">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Users</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="users">
+                            <ul class="nav nav-collapse">
+                            <li>
+                                <a href="/users">
+                                <span class="sub-item">Data Users</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/users/tambah">
+                                <span class="sub-item">Input Users</span>
+                                </a>
+                            </li>
+                        </div>
+                    </li>
+                    @endif
+
                 </ul>
             </div>
         </div>

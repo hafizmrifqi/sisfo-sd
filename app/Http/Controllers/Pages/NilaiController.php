@@ -53,8 +53,9 @@ class NilaiController extends Controller
             'siswa_id' => 'required|exists:siswa,id',
             'mapel_id' => 'required|exists:mapels,id',
             'kelas_id' => 'required|exists:kelas,id',
+            'kompetensi_id' => 'nullable|exists:kompetensis,id',
             'nilai' => 'required|numeric|min:0|max:100',
-            'jenis' => 'required|in:harian,uts,uas',
+            'jenis' => 'required|in:harian,uts,uas,tugas,project',
             'semester' => 'nullable|string|max:20',
             'tahun_ajaran' => 'nullable|integer|min:2000|max:' . (date('Y') + 1),
         ]);
@@ -62,7 +63,8 @@ class NilaiController extends Controller
         Nilai::create([
             'siswa_id' => $request->siswa_id,
             'mapel_id' => $request->mapel_id,
-            'kelas_id' => $request->kelas_id, // Simpan kelas_id
+            'kelas_id' => $request->kelas_id, 
+            'kompetensi_id' => $request->kompetensi_id,
             'nilai' => $request->nilai,
             'jenis' => $request->jenis,
             'semester' => $request->semester,
@@ -96,8 +98,9 @@ class NilaiController extends Controller
             'siswa_id' => 'required|exists:siswa,id',
             'mapel_id' => 'required|exists:mapels,id',
             'kelas_id' => 'required|exists:kelas,id',
+            'kompetensi_id' => 'nullable|exists:kompetensis,id',
             'nilai' => 'required|numeric|min:0|max:100',
-            'jenis' => 'required|in:harian,uts,uas',
+            'jenis' => 'required|in:harian,uts,uas,tugas,project',
             'semester' => 'nullable|string|max:20',
             'tahun_ajaran' => 'nullable|integer|min:2000|max:' . (date('Y') + 1),
         ]);
@@ -105,7 +108,8 @@ class NilaiController extends Controller
         $nilai->update([
             'siswa_id' => $request->siswa_id,
             'mapel_id' => $request->mapel_id,
-            'kelas_id' => $request->kelas_id, // Update kelas_id
+            'kelas_id' => $request->kelas_id, 
+            'kompetensi_id' => $request->kompetensi_id,
             'nilai' => $request->nilai,
             'jenis' => $request->jenis,
             'semester' => $request->semester,

@@ -83,4 +83,31 @@ Route::middleware('auth')->group(function () {
     Route::get('/absen/detail/{id}', [App\Http\Controllers\Pages\AbsenController::class, 'detail'])->name('absen.detail');
     Route::post('/absen/update/{id}', [App\Http\Controllers\Pages\AbsenController::class, 'update'])->name('absen.update');
     Route::get('/absen/delete/{id}', [App\Http\Controllers\Pages\AbsenController::class, 'delete'])->name('absen.delete');
+    Route::get('/absen/delete/{id}', [App\Http\Controllers\Pages\AbsenController::class, 'delete'])->name('absen.delete');
+
+    // Kompetensi
+    Route::get('/kompetensi', [App\Http\Controllers\Pages\KompetensiController::class, 'index'])->name('kompetensi.index');
+    Route::get('/kompetensi/tambah', [App\Http\Controllers\Pages\KompetensiController::class, 'create'])->name('kompetensi.create');
+    Route::post('/kompetensi/simpan', [App\Http\Controllers\Pages\KompetensiController::class, 'store'])->name('kompetensi.store');
+    Route::get('/kompetensi/edit/{id}', [App\Http\Controllers\Pages\KompetensiController::class, 'edit'])->name('kompetensi.edit');
+    Route::post('/kompetensi/update/{id}', [App\Http\Controllers\Pages\KompetensiController::class, 'update'])->name('kompetensi.update');
+    Route::get('/kompetensi/delete/{id}', [App\Http\Controllers\Pages\KompetensiController::class, 'delete'])->name('kompetensi.delete');
+
+    // Kurikulum
+    Route::get('/kurikulum', [App\Http\Controllers\Pages\KurikulumController::class, 'index'])->name('kurikulum.index');
+    Route::get('/kurikulum/tambah', [App\Http\Controllers\Pages\KurikulumController::class, 'create'])->name('kurikulum.create');
+    Route::post('/kurikulum/simpan', [App\Http\Controllers\Pages\KurikulumController::class, 'store'])->name('kurikulum.store');
+    Route::get('/kurikulum/edit/{id}', [App\Http\Controllers\Pages\KurikulumController::class, 'edit'])->name('kurikulum.edit');
+    Route::post('/kurikulum/update/{id}', [App\Http\Controllers\Pages\KurikulumController::class, 'update'])->name('kurikulum.update');
+    Route::get('/kurikulum/delete/{id}', [App\Http\Controllers\Pages\KurikulumController::class, 'delete'])->name('kurikulum.delete');
+});
+
+// Superadmin Only Routes
+Route::middleware(['auth', 'role:superadmin'])->group(function () {
+    Route::get('/users', [App\Http\Controllers\Pages\UsersController::class, 'index'])->name('users.index');
+    Route::get('/users/tambah', [App\Http\Controllers\Pages\UsersController::class, 'create'])->name('users.create');
+    Route::post('/users/simpan', [App\Http\Controllers\Pages\UsersController::class, 'store'])->name('users.store');
+    Route::get('/users/edit/{id}', [App\Http\Controllers\Pages\UsersController::class, 'edit'])->name('users.edit');
+    Route::post('/users/update/{id}', [App\Http\Controllers\Pages\UsersController::class, 'update'])->name('users.update');
+    Route::get('/users/delete/{id}', [App\Http\Controllers\Pages\UsersController::class, 'delete'])->name('users.delete');
 });

@@ -30,9 +30,9 @@ class RegisterController extends Controller
 
         $user = $this->create($request->all());
 
-        Auth::login($user);
+        // Auth::login($user); // Prevent auto-login
 
-        return redirect()->intended('/'); // Change as needed
+        return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan tunggu admin untuk mengaktifkan akun Anda.');
     }
 
     protected function validator(array $data)

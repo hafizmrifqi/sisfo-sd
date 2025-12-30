@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kelas'); // Contoh: "Kelas 1A", "Kelas 2B"
-            $table->enum('tingkat', ['1', '2', '3', '4', '5', '6']); // Contoh: "1", "2", "3", dst.
-            $table->foreignId('wali_kelas_id')->nullable()->constrained('gurus')->onDelete('set null'); // Relasi ke tabel guru
+            $table->string('nama_kelas');
+            $table->enum('tingkat', ['1', '2', '3', '4', '5', '6']);
+            $table->foreignId('wali_kelas_id')->nullable()->constrained('gurus')->onDelete('set null');
             $table->integer('tahun_ajaran')->default(date('Y'));
+            $table->foreignId('kurikulum_id')->nullable()->constrained('kurikulums')->onDelete('set null');
             $table->timestamps();
         });
     }

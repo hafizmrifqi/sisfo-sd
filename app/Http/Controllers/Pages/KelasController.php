@@ -53,10 +53,11 @@ class KelasController extends Controller
     public function addAction(Request $request)
     {
         $request->validate([
-            'nama_kelas' => 'required|string|max:100',
-            'tingkat' => 'required|in:1,2,3,4,5,6', // Pastikan tingkat sesuai dengan yang diinginkan
+            'nama_kelas' => 'required',
+            'tingkat' => 'required',
             'wali_kelas_id' => 'nullable|exists:gurus,id',
-            'tahun_ajaran' => 'required|digits:4',
+            'tahun_ajaran' => 'required|numeric',
+            'kurikulum_id' => 'nullable|exists:kurikulums,id',
         ]);
 
         Kelas::create([
@@ -64,6 +65,7 @@ class KelasController extends Controller
             'tingkat' => $request->tingkat,
             'wali_kelas_id' => $request->wali_kelas_id,
             'tahun_ajaran' => $request->tahun_ajaran,
+            'kurikulum_id' => $request->kurikulum_id,
         ]);
 
         return redirect()->route('kelas.index')->with('success', 'Kelas berhasil ditambahkan.');

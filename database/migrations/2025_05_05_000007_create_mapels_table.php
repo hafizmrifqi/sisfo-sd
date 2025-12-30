@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('mapels', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_mapel')->unique()->nullable(); // Opsional
-            $table->string('nama_mapel'); // Contoh: "Matematika", "Bahasa Indonesia"
+            $table->string('kode_mapel')->unique()->nullable();
+            $table->string('nama_mapel');
             $table->text('deskripsi')->nullable();
-            $table->enum('tingkat', ['1', '2', '3', '4', '5', '6'])->default('1'); // Tingkat SD
-            $table->foreignId('guru_id')->nullable()->constrained('gurus')->onDelete('set null'); // Relasi ke guru
+            $table->enum('tingkat', ['1', '2', '3', '4', '5', '6'])->default('1');
+            $table->float('kkm')->default(75);
+            $table->foreignId('guru_id')->nullable()->constrained('gurus')->onDelete('set null');
+            $table->foreignId('kurikulum_id')->nullable()->constrained('kurikulums')->onDelete('set null'); 
             $table->timestamps();
         });
     }

@@ -42,6 +42,8 @@ class MapelController extends Controller
             'deskripsi' => 'nullable|string|max:255',
             'tingkat' => 'required|in:1,2,3,4,5,6',
             'guru_id' => 'nullable|exists:gurus,id',
+            'kkm' => 'required|numeric|min:0|max:100',
+            'kurikulum_id' => 'nullable|exists:kurikulums,id',
         ]);
 
         Mapel::create($request->all());
@@ -71,6 +73,8 @@ class MapelController extends Controller
             'deskripsi' => 'nullable|string|max:255',
             'tingkat' => 'required|in:1,2,3,4,5,6',
             'guru_id' => 'nullable|exists:gurus,id',
+            'kkm' => 'required|numeric|min:0|max:100',
+            'kurikulum_id' => 'nullable|exists:kurikulums,id',
         ]);
 
         $mapel->update($request->all());
