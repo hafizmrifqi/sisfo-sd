@@ -22,7 +22,7 @@ class KurikulumController extends Controller
     public function create()
     {
         $data = [
-            'title' => 'Tambah Kurikulum'
+            'title' => 'Tambah Kurikulum',
         ];
         return view('pages.kurikulum.add', $data);
     }

@@ -73,22 +73,10 @@
                                     <option value="belum">-- Pilih Kurikulum --</option>
                                     @foreach ($kurikulum as $item)
                                         <option value="{{ $item->id }}">
-                                            {{ $item->nama }}
+                                            {{ $item->nama_kurikulum }}
                                         </option>
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label for="deskripsi">Deskripsi</label>
-                                <input
-                                    type="textarea"
-                                    class="form-control"
-                                    id="deskripsi"
-                                    placeholder="Masukian deskripsi mapel *opsional"
-                                    name="deskripsi"
-                                />
                             </div>
                         </div>
                         <div class="col-md-6 col-12">

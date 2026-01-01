@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use App\Models\Mapel;
+use App\Models\Kurikulum;
 use Illuminate\Http\Request;
 
 class MapelController extends Controller
@@ -25,10 +26,12 @@ class MapelController extends Controller
     public function add()
     {
         $guru = Guru::all();
+        $kurikulum = Kurikulum::all();
 
         $data = [
             'title' => 'Tambah Mata Pelajaran',
             'guru' => $guru, // Daftar guru untuk pilihan
+            'kurikulum' => $kurikulum,
         ];
 
         return view('pages.mapel.add', $data);
