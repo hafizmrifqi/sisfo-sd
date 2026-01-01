@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
-            $table->string('nipd')->unique()->nullable(); // Nomor Induk Siswa Nasional (unik, bisa null)
+            $table->string('nisn')->unique()->nullable(); // Nomor Induk Siswa Nasional (unik, bisa null)
             $table->string('nama');
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('tempat_lahir')->nullable();

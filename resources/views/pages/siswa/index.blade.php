@@ -21,7 +21,7 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>NIPD</th>
+                    <th>NISN</th>
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
                     <th>Tempat Lahir</th>
@@ -33,7 +33,7 @@
                 @forelse ($siswas as $key => $siswa)
                 <tr>
                     <td>{{ $loop->iteration + ($siswas->perPage() * ($siswas->currentPage() - 1)) }}</td>
-                    <td>{{ $siswa->nipd }}</td>
+                    <td>{{ $siswa->nisn }}</td>
                     <td>{{ $siswa->nama }}</td>
                     <td>{{ $siswa->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
                     <td>{{ $siswa->tempat_lahir }}</td>

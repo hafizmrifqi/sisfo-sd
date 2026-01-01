@@ -17,15 +17,15 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label for="nipd">NIPD</label>
+                                <label for="nisn">NISN</label>
                                 <input
                                     type="text"
                                     class="form-control"
-                                    id="nipd"
-                                    placeholder="Masukian NIPD"
-                                    name="nipd"
+                                    id="nisn"
+                                    placeholder="Masukan NISN"
+                                    name="nisn"
                                 />
-                                <small id="nipd" class="form-text text-muted"
+                                <small id="nisn" class="form-text text-muted"
                                     >Pastikan data sesuai</small
                                 >
                             </div>

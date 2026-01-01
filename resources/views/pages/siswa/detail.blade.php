@@ -11,7 +11,7 @@
                         <img src="{{ asset('assets/img/profile.png') }}" alt="" style="max-width: 200px;">
                         <div class="m-3 p-3">
                             <h2>{{ $siswa->nama }}</h2>
-                            <p><strong>NIPD:</strong> {{ $siswa->nipd }}</p>
+                            <p><strong>NISN:</strong> {{ $siswa->nisn }}</p>
                             <p><strong>Jenis Kelamin:</strong> {{ $siswa->jenis_kelamin }}</p>
                             <p><strong>Tanggal Lahir:</strong> {{ $siswa->tanggal_lahir }}</p>
                             <p><strong>Alamat:</strong> {{ $siswa->alamat }}</p>

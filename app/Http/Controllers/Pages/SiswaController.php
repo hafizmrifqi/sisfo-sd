@@ -70,7 +70,7 @@ class SiswaController extends Controller
     {
         // Validasi input
         $request->validate([
-            'nipd'          => 'required|string|max:20',
+            'nisn'          => 'required|string|max:20',
             'nama'          => 'required|string|max:100',
             'jenis_kelamin' => 'required|in:L,P',
             'tempat_lahir'  => 'required|string|max:100',
@@ -81,7 +81,7 @@ class SiswaController extends Controller
 
         // Simpan data ke database
         Siswa::create([
-            'nipd'          => $request->nipd,
+            'nisn'          => $request->nisn,
             'nama'          => $request->nama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tempat_lahir'  => $request->tempat_lahir,
@@ -110,7 +110,7 @@ class SiswaController extends Controller
     {
         // Validasi input
         $request->validate([
-            'nipd'          => 'required|string|max:20',
+            'nisn'          => 'required|string|max:20',
             'nama'          => 'required|string|max:100',
             'jenis_kelamin' => 'required|in:L,P',
             'tempat_lahir'  => 'required|string|max:100',
@@ -124,7 +124,7 @@ class SiswaController extends Controller
 
         // Update data
         $siswa->update([
-            'nipd'          => $request->nipd,
+            'nisn'          => $request->nisn,
             'nama'          => $request->nama,
             'jenis_kelamin' => $request->jenis_kelamin,
             'tempat_lahir'  => $request->tempat_lahir,
