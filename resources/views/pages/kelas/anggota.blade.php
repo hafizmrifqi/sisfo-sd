@@ -26,7 +26,7 @@
                         <select name="siswa_id" id="siswa_id" class="form-select" required>
                             <option value="">-- Pilih Siswa --</option>
                             @foreach ($semuaSiswa as $siswa)
-                                <option value="{{ $siswa->id }}">{{ $siswa->nama }} ({{ $siswa->nipd }})</option>
+                                <option value="{{ $siswa->id }}">{{ $siswa->nama }} ({{ $siswa->nisn }})</option>
                             @endforeach
                         </select>
                     </div>
@@ -48,7 +48,7 @@
                     <ul class="list-group">
                         @foreach ($kelas->siswa as $siswa)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $siswa->nama }} ({{ $siswa->nipd }})
+                                {{ $siswa->nama }} ({{ $siswa->nisn }})
                                 <form action="{{ route('kelas.hapus.siswa', [$kelas->id, $siswa->id]) }}" method="POST"
                                       onsubmit="return confirm('Yakin ingin menghapus siswa ini dari kelas?')">
                                     @csrf

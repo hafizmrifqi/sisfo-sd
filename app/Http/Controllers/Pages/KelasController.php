@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use App\Models\Kelas;
+use App\Models\Kurikulum;
 use App\Models\Siswa;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class KelasController extends Controller
         $data = [
             'title' => 'Data Kelas',
             'kelases' => $kelas,
+            'kurikulum' => Kurikulum::all(),
         ];
 
         // Logika untuk menampilkan daftar kelas
@@ -31,6 +33,7 @@ class KelasController extends Controller
         $data = [
             'title' => 'Tambah Kelas',
             'guru' => $guru, // Daftar guru untuk pilihan wali kelas
+            'kurikulum' => Kurikulum::all(),
         ];
 
         // Logika untuk menampilkan form tambah kelas

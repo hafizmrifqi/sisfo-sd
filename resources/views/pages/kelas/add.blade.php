@@ -72,6 +72,19 @@
                                 >
                             </div>
                         </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="kurikulum_id">Kurikulum</label>
+                                <select name="kurikulum_id" id="kurikulum_id" class="form-select" required>
+                                    <option value="belum">-- Pilih Kurikulum --</option>
+                                    @foreach ($kurikulum as $item)
+                                        <option value="{{ $item->id }}">
+                                            {{ $item->nama_kurikulum }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-action">

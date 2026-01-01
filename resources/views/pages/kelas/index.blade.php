@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
         <!-- Table -->
         <table id="kelasTable" class="display table table-bordered table-responsive" style="width:100%">
             <thead>
@@ -19,6 +19,7 @@
                     <th>Tingkat</th>
                     <th>Tahun Ajaran</th>
                     <th>Wali Kelas</th>
+                    <th>Kurikulum</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@
                     <td>{{ $kelas->tingkat }}</td>
                     <td>{{ $kelas->tahun_ajaran }}</td>
                     <td>{{ optional($kelas->walas)->nama ?? 'Tidak ada wali kelas' }}</td>
+                    <td>{{ optional($kelas->kurikulum)->nama_kurikulum ?? 'Tidak ada kurikulum' }}</td>
                     <td class="d-flex">
                         <a href="{{ route('kelas.edit', $kelas->id) }}" class="btn btn-sm btn-warning m-1">Edit</a>
                         <a href="{{ route('kelas.delete', $kelas->id) }}" class="btn btn-sm btn-danger m-1" onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
