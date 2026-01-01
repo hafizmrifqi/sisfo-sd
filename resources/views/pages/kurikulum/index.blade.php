@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
         <!-- Table -->
         <table id="kurikulumTable" class="display table table-bordered table-responsive" style="width:100%">
             <thead>

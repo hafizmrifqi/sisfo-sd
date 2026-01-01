@@ -232,6 +232,28 @@
                         </div>
                     </li>
 
+                    {{-- Kurikulum --}}
+                    <li class="nav-item">
+                        <a data-bs-toggle="collapse" href="#kurikulum">
+                            <i class="fas fa-layer-group"></i>
+                            <p>Kurikulum</p>
+                            <span class="caret"></span>
+                        </a>
+                        <div class="collapse" id="kurikulum">
+                            <ul class="nav nav-collapse">
+                            <li>
+                                <a href="/kurikulum">
+                                <span class="sub-item">Data Kurikulum</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/kurikulum/tambah">
+                                <span class="sub-item">Input Kurikulum</span>
+                                </a>
+                            </li>
+                        </div>
+                    </li>
+
                     {{-- bagian untuk admin saja --}}
                     @if(Auth::user()->role == 'superadmin')
                     <li class="nav-section">
