@@ -56,6 +56,43 @@
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
+                                <label for="kkm">KKM</label>
+                                <input
+                                    type="number"   
+                                    class="form-control"
+                                    id="kkm"
+                                    placeholder="Masukian KKM mapel *opsional"
+                                    name="kkm"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="kurikulum_id">Kurikulum</label>
+                                <select name="kurikulum_id" id="kurikulum_id" class="form-select" required>
+                                    <option value="belum">-- Pilih Kurikulum --</option>
+                                    @foreach ($kurikulum as $item)
+                                        <option value="{{ $item->id }}">
+                                            {{ $item->nama }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label for="deskripsi">Deskripsi</label>
+                                <input
+                                    type="textarea"
+                                    class="form-control"
+                                    id="deskripsi"
+                                    placeholder="Masukian deskripsi mapel *opsional"
+                                    name="deskripsi"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
                                 <label for="tingkat">Tingkat / Kelas</label>
                                 <select class="form-select form-control" id="tingkat" name="tingkat">
                                     <option>-- Pilih Tingkat / Kelas --</option>
